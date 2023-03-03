@@ -5,7 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttonTaks = document.querySelector('.createTask');
     const buttonClear = document.querySelector('.clear');
 
-    function handleClickTask() {
+    function handleClickTask(e) {
+        // console.log(e)
+        // if(e.keyCode === 13) {
+            
+        // }
         const task = inputTask.value;
         const lengthTasks = divTaskContent.childNodes.length;
 
@@ -82,5 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         inputTask.classList.add('inputiInvalid');
     }
 
+    // buttonTaks.addEventListener('keypress', handleClickTask);
     buttonTaks.addEventListener('click', handleClickTask);
 });
