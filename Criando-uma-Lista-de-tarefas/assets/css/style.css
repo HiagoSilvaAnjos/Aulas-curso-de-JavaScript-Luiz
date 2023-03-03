@@ -83,3 +83,7 @@ button:hover {
 .inputiInvalid {
   border-color: #ff0000;
 }
+
+.clear {
+  display: none;
+}
