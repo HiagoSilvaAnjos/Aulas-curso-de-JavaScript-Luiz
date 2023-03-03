@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const lengthTasks = divTaskContent.childNodes.length;
 
         if (!validateInput(task)) { return inputInvalid() }
+
         inputTask.value = '';
+        inputTask.focus();
         inputTask.classList.remove('inputiInvalid');
 
         if (lengthTasks >= 1) { buttonClear.style.display = 'block'; }
@@ -84,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // input vazio
     function inputInvalid() {
         inputTask.classList.add('inputiInvalid');
+        inputTask.focus();
     }
 
     // buttonTaks.addEventListener('keypress', handleClickTask);
