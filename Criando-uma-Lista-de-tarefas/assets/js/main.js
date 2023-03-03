@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return deleteElement;
         };
 
-
         const divTask = containerTask();
         const valueTask = textTask();
         const deleteTaskElement = deleteTask();
