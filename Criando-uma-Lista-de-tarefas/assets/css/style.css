@@ -31,7 +31,8 @@ body {
   margin-bottom: 10px;
 }
 
-div {
+.task-container {
+  overflow: auto;
   display: flex;
   justify-content: space-between;
 
@@ -43,6 +44,8 @@ div {
 }
 
 div .deleteTask {
+  font-weight: bold;
+  color: #ca3030;
   cursor: pointer;
 }
 
@@ -78,5 +81,5 @@ button:hover {
 
 /* utilitis */
 .inputiInvalid {
-  border-color: red;
+  border-color: #ff0000;
 }
