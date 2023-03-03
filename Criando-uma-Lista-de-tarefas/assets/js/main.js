@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const container = document.querySelector('.container');
+    const sectionContainer = document.querySelector('.container');
+    const divTaskContent = document.querySelector('.taskElement');
     const inputTask = document.querySelector('.input-task');
     const buttonTaks = document.querySelector('.createTask');
 
@@ -12,7 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
         inputTask.classList.remove('inputiInvalid');
 
         const taskContent = createTask(task);
-        container.appendChild(taskContent);
+        divTaskContent.appendChild(taskContent);
+        sectionContainer.appendChild(divTaskContent);
+        
 
         const getElementDeleteTask = taskContent.childNodes[1];
         getElementDeleteTask.addEventListener('click', () => deleteTask(taskContent));
