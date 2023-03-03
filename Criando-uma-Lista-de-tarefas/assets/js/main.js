@@ -9,16 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const task = inputTask.value;
         const lengthTasks = divTaskContent.childNodes.length;
 
-        if (lengthTasks >= 1) { buttonClear.style.display = 'block'; }
-
         if (!validateInput(task)) { return inputInvalid() }
         inputTask.value = '';
         inputTask.classList.remove('inputiInvalid');
 
+        if (lengthTasks >= 1) { buttonClear.style.display = 'block'; }
+
         const taskContent = createTask(task);
         divTaskContent.appendChild(taskContent);
 
-        const getElementDeleteTask = taskContent.childNodes[1];
+        const getElementDeleteTask = taskContent.querySelector('.deleteTask');
         getElementDeleteTask.addEventListener('click', () => deleteTask(taskContent));
 
     }
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const lengthTasks = divTaskContent.childNodes.length;
 
         taskElement.remove();
-        if (lengthTasks <= 1) { buttonClear.style.display = 'none'; }
+        if (lengthTasks <= 2) { buttonClear.style.display = 'none'; }
     }
 
     // input vazio
