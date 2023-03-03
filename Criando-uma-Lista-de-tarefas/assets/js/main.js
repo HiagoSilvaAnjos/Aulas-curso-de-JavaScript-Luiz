@@ -5,9 +5,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttonTaks = document.querySelector('.createTask');
 
     function handleClickTask() {
-        const taskContent = createTask(inputTask.value);
+        const task = inputTask.value;
+
+        if (!validateInput(task)) {return inputInvalid()}
+        inputTask.value = '';
+        inputTask.classList.remove('inputiInvalid');
+
+        const taskContent = createTask(task);
         container.appendChild(taskContent);
+
+        const getElementDeleteTask = taskContent.childNodes[1];
+        getElementDeleteTask.addEventListener('click', () => deleteTask(taskContent));
     }
+
+    function validateInput(inputValue) { return inputValue.length > 0}
 
     function createTask(taskValue) { return createTaskContainer(taskValue) }
 
@@ -31,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const deleteElement = document.createElement('p');
             deleteElement.innerHTML = 'x';
             deleteElement.classList.add('deleteTask');
-            deleteElement.addEventListener('click', deleteTaskContent);
 
             return deleteElement;
         };
@@ -47,8 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return divTask;
     }
 
-    function deleteTaskContent() {
-        alert('deletar tarefa')
+    function deleteTask(taskElement) {
+        taskElement.remove();
+    }
+
+    // input vazio
+    function inputInvalid() {
+        inputTask.classList.add('inputiInvalid');
     }
 
     buttonTaks.addEventListener('click', handleClickTask);
