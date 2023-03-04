@@ -4,6 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputTask = document.querySelector('.input-task');
     const buttonTaks = document.querySelector('.createTask');
     const buttonClear = document.querySelector('.clear');
+    loadTasks();
+
+    function loadTasks () {
+        let taskColection = localStorage.getItem('keyTask');
+        if(taskColection === null) {
+            return taskColection = [];
+        }
+
+        const taskValue = JSON.parse(taskColection);
+        console.log(taskValue);
+
+        for(tarefa of taskValue) {
+            divTaskContent.appendChild(createTask(tarefa))
+        }       
+        
+        const teste = divTaskContent.querySelectorAll('.task-container');
+    
+        
+
+        // saveTask();
+
+        // const lengthTasks = divTaskContent.childNodes.length;
+        // console.log(lengthTasks);
+        // if (lengthTasks >= 1) { buttonClear.style.display = 'block'; }
+    }
 
     function handleClickTask() {
         const task = inputTask.value;
@@ -22,6 +47,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const getElementDeleteTask = taskContent.querySelector('.deleteTask');
         getElementDeleteTask.addEventListener('click', () => deleteTask(taskContent));
+
+        saveTask();
+    }
+
+    function saveTask() {
+        const tasks = divTaskContent.children;
+        const taskContentElement = [];
+
+        for (taskDiv of tasks) {
+            taskContentElement.push(taskDiv.firstChild.innerText);
+        }
+
+        const JSONTask = JSON.stringify(taskContentElement)
+
+        localStorage.setItem('keyTask', JSONTask);
     }
 
     // limpar tarefas
@@ -34,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
         buttonClear.style.display = 'none';
+        saveTask()
     })
 
     // validar campo input
@@ -79,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         taskElement.remove();
         if (lengthTasks <= 2) { buttonClear.style.display = 'none'; }
+        saveTask()
     }
 
     // input vazio
