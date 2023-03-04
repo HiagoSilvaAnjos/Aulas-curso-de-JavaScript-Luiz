@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttonClear = document.querySelector('.clear');
     loadTasks();
 
+    // carregar tasks salvas no local storage
     function loadTasks() {
         let taskColection = localStorage.getItem('keyTask');
         if (taskColection === null) {
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lengthTasks > 1) { buttonClear.style.display = 'block'; }
     }
 
+    // butão adicionar task 
     function handleClickTask() {
         const task = inputTask.value;
         const lengthTasks = divTaskContent.childNodes.length;
@@ -56,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         saveTask();
     }
 
+    // Salvar tarefa
     function saveTask() {
         const tasks = divTaskContent.children;
         const taskContentElement = [];
