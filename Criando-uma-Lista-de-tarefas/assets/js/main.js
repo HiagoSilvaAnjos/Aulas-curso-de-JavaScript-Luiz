@@ -5,11 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttonTaks = document.querySelector('.createTask');
     const buttonClear = document.querySelector('.clear');
 
-    function handleClickTask(e) {
-        // console.log(e)
-        // if(e.keyCode === 13) {
-            
-        // }
+    function handleClickTask() {
         const task = inputTask.value;
         const lengthTasks = divTaskContent.childNodes.length;
 
@@ -26,9 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const getElementDeleteTask = taskContent.querySelector('.deleteTask');
         getElementDeleteTask.addEventListener('click', () => deleteTask(taskContent));
-
     }
 
+    // limpar tarefas
     buttonClear.addEventListener('click', () => {
 
         const tasks = divTaskContent.querySelectorAll('.task-container');
@@ -40,8 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
         buttonClear.style.display = 'none';
     })
 
+    // validar campo input
     function validateInput(inputValue) { return inputValue.length > 0 }
 
+    // criar tarefa
     function createTask(taskValue) {
         function containerTask() {
             const divElement = document.createElement('div');
