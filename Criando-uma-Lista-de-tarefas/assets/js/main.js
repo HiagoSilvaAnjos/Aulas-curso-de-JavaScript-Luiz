@@ -6,28 +6,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttonClear = document.querySelector('.clear');
     loadTasks();
 
-    function loadTasks () {
+    function loadTasks() {
         let taskColection = localStorage.getItem('keyTask');
-        if(taskColection === null) {
+        if (taskColection === null) {
             return taskColection = [];
         }
 
         const taskValue = JSON.parse(taskColection);
-        console.log(taskValue);
 
-        for(tarefa of taskValue) {
+        for (tarefa of taskValue) {
             divTaskContent.appendChild(createTask(tarefa))
-        }       
-        
-        const teste = divTaskContent.querySelectorAll('.task-container');
-    
-        
+        }
 
-        // saveTask();
+        const taskElement = divTaskContent.querySelectorAll('.task-container');
+        taskElement.forEach((elementDelete) => {
+            const deleteTaskButton = elementDelete.children[1];
 
-        // const lengthTasks = divTaskContent.childNodes.length;
-        // console.log(lengthTasks);
-        // if (lengthTasks >= 1) { buttonClear.style.display = 'block'; }
+            deleteTaskButton.addEventListener('click', () => {
+                elementDelete.remove();
+                saveTask();
+                const lengthTasks = divTaskContent.childNodes.length;
+                if (lengthTasks <= 1) { buttonClear.style.display = 'none'; }
+            })
+
+        })
+
+        const lengthTasks = divTaskContent.childNodes.length;
+        if (lengthTasks > 1) { buttonClear.style.display = 'block'; }
     }
 
     function handleClickTask() {
