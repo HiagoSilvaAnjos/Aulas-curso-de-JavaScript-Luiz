@@ -9,14 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // carregar tasks salvas no local storage
     function loadTasks() {
         let taskColection = localStorage.getItem('keyTask');
+
         if (taskColection === null) {
             return taskColection = [];
         }
 
         const taskValue = JSON.parse(taskColection);
 
-        for (tarefa of taskValue) {
-            divTaskContent.appendChild(createTask(tarefa))
+        for (taskItem of taskValue) {
+            divTaskContent.appendChild(createTask(taskItem))
         }
 
         const taskElement = divTaskContent.querySelectorAll('.task-container');
@@ -67,14 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
             taskContentElement.push(taskDiv.firstChild.innerText);
         }
 
-        const JSONTask = JSON.stringify(taskContentElement)
+        const JSONTask = JSON.stringify(taskContentElement);
 
         localStorage.setItem('keyTask', JSONTask);
     }
 
     // limpar tarefas
     buttonClear.addEventListener('click', () => {
-
         const tasks = divTaskContent.querySelectorAll('.task-container');
 
         tasks.forEach(task => {
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
         buttonClear.style.display = 'none';
-        saveTask()
+        saveTask();
     })
 
     // validar campo input
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         taskElement.remove();
         if (lengthTasks <= 2) { buttonClear.style.display = 'none'; }
-        saveTask()
+        saveTask();
     }
 
     // input vazio
