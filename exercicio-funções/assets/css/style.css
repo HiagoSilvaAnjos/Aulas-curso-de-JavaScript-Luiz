@@ -26,7 +26,7 @@ body {
 }
 
 .container {
-  width: 60rem;
+  width: 55rem;
   background: #fff;
   padding: 2.5rem;
   border-radius: 1rem;
@@ -66,18 +66,20 @@ input:focus {
 
 .characters {
   width: 100%;
-  height: 40rem;
+  height: auto;
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
-  background-color: #80808074;
 }
 
 .character {
   width: 100%;
-  height: 100%;
+  height: 8rem;
+
+  background-color: #80808074;
+  border-radius: 0.2rem;
   border: 0.1rem solid black;
   cursor: pointer;
 
@@ -90,5 +92,5 @@ input:focus {
 }
 
 .character:hover {
-  background-color: #80808082;
+  background-color: #808080bc;
 }
