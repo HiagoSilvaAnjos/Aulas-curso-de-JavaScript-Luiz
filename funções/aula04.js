@@ -3,7 +3,7 @@ const createPeaple = (firstName, lastName, weight, height) => {
     return {
         firstName,
         lastName,
-        
+
         // Getter                                            
         get sumDate() {
             return `Olá ${this.firstName} ${this.lastName}`
