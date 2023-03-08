@@ -83,7 +83,6 @@ input:focus {
   width: 100%;
   height: 8rem;
 
-  background-color: #80808074;
   border-radius: 0.2rem;
   cursor: pointer;
 
@@ -95,10 +94,18 @@ input:focus {
   transition: all 0.1s ease-in;
 }
 
+.numbers {
+  background-color: #80808074;
+}
+
 .operators {
   background-color: gray;
 }
 
 .character:hover {
   background-color: #808080bc;
+}
+
+.dateInvalid {
+  background-color: #b80f0f8f;
 }

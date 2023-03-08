@@ -6,12 +6,14 @@ function calculate() {
 
 
     document.addEventListener('click', (event) => {
+        const character = event.target.innerHTML;
+        const validateCharacter = event.target.getAttribute('data-character') ? true : false;
 
-        const character = event.target.getAttribute('data-character');
-        if (character !== null) input.value += character;
-
+        if (validateCharacter) {
+            input.classList.remove('dateInvalid');
+            return input.value += character
+        };
     });
-
 
     buttonClear.addEventListener('click', () => input.value = '');
     buttonDeleteOneValue.addEventListener('click', () => input.value = input.value.slice(0, -1));
@@ -24,7 +26,8 @@ function calculate() {
 
             if (!count) {
                 alert('Conta Iválida');
-                return input.value = 0;
+                input.classList.add('dateInvalid')
+                return input.value = '';
             }
 
             input.value = count;
@@ -32,7 +35,8 @@ function calculate() {
         catch (error) {
             console.log(typeof count)
             alert("Conta Inválida");
-            return input.value = 0;
+            input.classList.add('dateInvalid')
+            return input.value = '';
         }
 
     });
