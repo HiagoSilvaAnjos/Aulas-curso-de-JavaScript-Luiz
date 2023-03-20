@@ -39,6 +39,6 @@ class validCPF {
     }
 }
 
-const cpf = new validCPF('705.484.450-52');
-if (cpf.valid()) return console.log("Válido");
-if (!cpf.valid()) return console.log("Inválido");
+// const cpf = new validCPF('705.484.450-52');
+// if (cpf.valid()) return console.log("Válido");
+// if (!cpf.valid()) return console.log("Inválido"); 
