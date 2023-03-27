@@ -4,7 +4,7 @@
 //     .catch(err => console.error(err));
 
 axios('pessoas.json')
-    .then(response => { loadElementsPage(response.data) })
+    .then(response => loadElementsPage(response.data))
     .catch(err => console.log("Not Found"));
 
 function loadElementsPage(dateJson) {
