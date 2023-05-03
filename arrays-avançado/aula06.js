@@ -21,10 +21,13 @@ const person = [
     { name: "Ediardo", age: 55 },
     { name: "Letícia", age: 19 },
     { name: "Rosana", age: 70 },
+    { name: "Rosa", age: 80 },
     { name: "Walace", age: 47 }
 ];
 
 const personOld = person.reduce((accumulator, value) => {
+    console.log(value)
+    console.log(accumulator)
     if (accumulator.age > value.age) return accumulator;
     return value;
 })
