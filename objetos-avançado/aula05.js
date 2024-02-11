@@ -17,27 +17,27 @@ const objectValueC = {
 Object.setPrototypeOf(objectValueB, objectValueA);
 Object.setPrototypeOf(objectValueC, objectValueB);
 
-function Product(name, value) {
-    this.name = name;
-    this.value = value;
+class Product {
+    constructor(name, value) {
+        this.name = name;
+        this.value = value;
+    }
 }
 
-const calcDesc = function (percentage) {
+Product.prototype.desc = function (percentage) {
     if (typeof percentage !== 'number') throw TypeError("Typeof value invalid");
-    const producCopy = { ...this };
-    producCopy.value = producCopy.value - (producCopy.value * (percentage / 100));
-    return producCopy;
-}
 
-const increasePrice = function (percentage) {
+    this.value = this.value - (this.value * (percentage / 100));
+    return this;
+};
+
+Product.prototype.increase = function (percentage) {
     if (typeof percentage !== 'number') throw TypeError("Typeof value invalid");
-    const producCopy = { ...this };
-    producCopy.value = producCopy.value + (producCopy.value * (percentage / 100));
-    return producCopy;
-}
 
-Product.prototype.Desc = calcDesc;
-Product.prototype.increase = increasePrice;
+    this.value = this.value + (this.value * (percentage / 100));
+    return this;
+};
 
 const productOne = new Product("Camisa", 100);
-console.log(productOne);
+console.log(productOne.desc(10).value)
+console.log(productOne.increase(10).value)
