@@ -77,9 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buttonClear.addEventListener('click', () => {
         const tasks = divTaskContent.querySelectorAll('.task-container');
 
-        tasks.forEach(task => {
-            task.remove();
-        })
+        tasks.forEach(task => task.remove())
 
         buttonClear.style.display = 'none';
         saveTask();
