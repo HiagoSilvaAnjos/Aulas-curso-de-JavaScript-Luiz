@@ -1,25 +1,36 @@
 // FIXME: Factory Function (Função fábrica)
-const createPeaple = (firstName, lastName, weight, height) => {
+
+function createFactoryPerson(name, email, password, height, weight) {
     return {
-        firstName,
-        lastName,
-
-        // Getter                                            
-        get sumDate() {
-            return `Olá ${this.firstName} ${this.lastName}`
-        },
-
-        weight,
+        name,
+        email,
+        password,
         height,
-        // Getter
+        weight,
 
         get imc() {
-            const index = this.weight / (this.height ** 2);
-            return index.toFixed(2);
+            const indexImc = this.weight / (this.height ** 2);
+            return console.log(indexImc.toFixed(2));
+        },
+
+        set imc(value) {
+            value = value.split(' ');
+            this.height = Number(value[0]);
+            this.weight = Number(value[1]);
+        },
+
+        get showNameCompleted() { return console.log(`Nome:${this.name} | Email:${this.email} | Senha:${this.password}`) },
+
+        set showNameCompleted(value) {
+
+            value = value.split(' ');
+
+            this.name = value.shift();
+            this.email = value[0];
+            this.password = value[1];
         }
-    }
+
+    };
 }
 
-const onePeaple = createPeaple("Hiago", "Silva", 60, 1.7);
-console.log(onePeaple.sumDate);
-console.log(onePeaple.imc);
+const personOne = createFactoryPerson("Hiago", "H@mail.com", "123456", 1.80, 70);
