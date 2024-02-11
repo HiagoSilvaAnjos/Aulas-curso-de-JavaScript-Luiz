@@ -11,21 +11,36 @@ class Product {
             get: () => stock,
             set: (value) => {
                 if (typeof value !== "number") throw new TypeError("Typeof Invalid");
-
-                stock = value;
+                return stock = value;
             }
         })
 
     }
 }
 
+// FIXME: produto 1
+
 const productOne = new Product("Camiseta", 30, 100);
-const productTwo = new Product("Short", 20, 50);
 
 // Valor alterado com sucesso
-productOne.stock = 300;
-console.log(productOne.stock);
+try {
+    console.log(productOne.stock = 123);
+} catch (error) {
+    const tratamentError = error;
+    console.log("Tipo de dado inválido...");
+} finally {
+    console.log("Bom dia");
+}
 
-// Error
-productTwo.stock = '100';
-console.log(productTwo.stock);
+// //  FIXME: produto 2
+const productTwo = new Product("Short", 20, 50);
+
+// Valor alterado com error
+try {
+    console.log(productTwo.stock = "500");
+} catch (error) {
+    const tratamentError = error;
+    console.log("Tipo de dado inválido...");
+} finally {
+    console.log("Bom dia");
+}
