@@ -1,57 +1,68 @@
 // SuperClasses
-function Conta(agencia, conta, saldo) {
-    this.agencia = agencia;
-    this.conta = conta;
-    this.saldo = saldo;
-};
-Conta.prototype.sacar = function (valor) {
-    if (this.saldo < valor) {
-        return console.log(`Saldo insuficiente! voce possui R$${this.saldo.toFixed(2)}`)
+class Account {
+    constructor(AccountBank, bankAgency, bankBalance) {
+        this.AccountBank = AccountBank;
+        this.bankAgency = bankAgency;
+        this.bankBalance = bankBalance;
     }
 
-    this.saldo -= valor;
-    this.verSaldo();
-};
-Conta.prototype.depositar = function (valor) {
-    this.saldo += valor
-    this.verSaldo()
-};
-Conta.prototype.verSaldo = function () {
-    return console.log(`Agencia: ${this.agencia} | conta: ${this.conta} | Saldo: R$${this.saldo.toFixed(2)}`);
-};
-
-function ContaCorrente(agencia, conta, saldo, limite) {
-    Conta.call(this, agencia, conta, saldo);
-    this.limite = limite;
-}
-
-ContaCorrente.prototype = Object.create(Conta.prototype);
-ContaCorrente.prototype.costructor = ContaCorrente;
-
-ContaCorrente.prototype.sacar = function (valor) {
-    if (valor > (this.saldo + this.limite)) {
-        return console.log(`Saldo insuficiente! voce possui R$${this.saldo.toFixed(2)}`);
+    addMoney(moneyValue) {
+        this.bankBalance += moneyValue;
+        return this.viewCount();
     }
 
-    this.saldo -= valor;
-    this.verSaldo();
-};
+    removeMoney(moneyValue) {
+        if (this.bankBalance < moneyValue) {
+            console.log("Valor acima do limite!");
+            console.log(`Saldo: ${this.bankBalance}`);
+            return
+        }
 
-function ContaPoupanca(agencia, conta, saldo) {
-    Conta.call(this, agencia, conta, saldo);
+        this.bankBalance -= moneyValue;
+        return this.viewCount();
+    }
+
+    viewCount() {
+        console.log(`Conta bancária: ${this.AccountBank}`);
+        console.log(`Agência bancária: ${this.bankAgency}`);
+        console.log(`Saldo na conta: R$ ${this.bankBalance.toFixed(2)}`);
+        console.log("");
+    }
 }
 
-ContaPoupanca.prototype = Object.create(Conta.prototype);
-ContaPoupanca.prototype.costructor = ContaPoupanca;
+/* classe CurrentAccount que herda da classe Account através do "extends", permitindo que CurrentAccount compartilhe os atributos e métodos definidos em Account. */
+class CurrentAcount extends Account {
+    // Construtor da classe CurrentAccount
+    constructor(AccountBank, bankAgency, bankBalance, limit) {
+        /* Chama o construtor da classe pai (Account) para inicializar os atributos herdados
+        através do super. super é uma referência para o construtor da classe pai (Account), que é invocado aqui com os parâmetros correspondentes.*/
+        super(AccountBank, bankAgency, bankBalance);
+        this.limit = limit;
+    }
 
-const conta1 = new ContaCorrente(11, 11, 0, 100);
-conta1.depositar(10);
-conta1.sacar(110);
-conta1.sacar(1);
+    removeMoney(moneyValue) {
+        if (moneyValue > (this.bankBalance + this.limit)) {
+            console.log("Valor acima do limite!");
+            console.log(`Saldo: ${this.bankBalance}`);
+            return
+        }
 
-console.log()
+        this.bankBalance -= moneyValue;
+        return this.viewCount();
+    }
+}
 
-const conta2 = new ContaPoupanca(22, 22, 0, 100);
-conta2.depositar(10);
-conta2.sacar(110);
-conta2.sacar(1);
+// Conta poupança
+class SavingsAccount extends Account {
+    // Construtor da classe CurrentAccount
+    constructor(AccountBank, bankAgency, bankBalance) {
+        /* Chama o construtor da classe pai (Account) para inicializar os atributos herdados
+        através do super. super é uma referência para o construtor da classe pai (Account), que é invocado aqui com os parâmetros correspondentes.*/
+        super(AccountBank, bankAgency, bankBalance);
+    }
+}
+const currentCount = new CurrentAcount(6666, 1111, 100, 1000);
+currentCount.removeMoney(1000);
+
+const savingsAccount = new SavingsAccount(1010, 202022, 1412);
+savingsAccount.removeMoney(2000);
