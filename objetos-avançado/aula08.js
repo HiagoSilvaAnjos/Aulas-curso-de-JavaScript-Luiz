@@ -1,8 +1,6 @@
 // Factory Functions
 const speak = {
-    speak() {
-        return console.log(`${this.name} está falando`);
-    }
+    speak() { return console.log(`${this.name} está falando`) }
 }
 const eat = {
     eat() {
@@ -25,4 +23,6 @@ function createPerson(name, surname) {
 }
 
 const personOne = createPerson('Hiago', 'Silva');
+const personTwo = createPerson('Ana', 'Clara');
 console.log(personOne)
+console.log(personTwo)
