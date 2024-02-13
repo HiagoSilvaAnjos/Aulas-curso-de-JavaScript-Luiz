@@ -1,10 +1,7 @@
 // 705.484.450-52 070.987.720-03
 class validCPF {
     constructor(cpf) {
-        Object.defineProperty(this, "clearCPF", {
-            enumerable: true,
-            value: cpf.replace(/\D+/g, '')
-        })
+        this.clearCPF = cpf;
     }
 
     valid() {
@@ -39,6 +36,4 @@ class validCPF {
     }
 }
 
-// const cpf = new validCPF('705.484.450-52');
-// if (cpf.valid()) return console.log("Válido");
-// if (!cpf.valid()) return console.log("Inválido"); 
+const cpf = new validCPF("04901297228");
