@@ -10,12 +10,11 @@ for (const pessoa of pessoas) {
     const { id } = pessoa;
     newpessoas.set(id, { ...pessoa })
 }
-// console.log(newpessoas)
 
 const myMap = new Map();
 myMap.set("Name", "Hiago");
 myMap.set("Surname", "Silva");
 
-for (const [Name, Surname] of myMap) {
-    console.log(Name, Surname)
+for (const [key, value] of myMap.entries()) {
+    console.log(key, value);
 }
