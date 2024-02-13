@@ -7,11 +7,13 @@ class ElectronicDevice {
 
     get toConnect() {
         if (this.connected) return console.log(`${this.typeofDevice} Já está ligado`);
-        this.connected = true;
+        console.log("Ligado...");
+        return this.connected = true;
     }
 
     get toOff() {
-        if (!this.connected) return console.log(`${this.typeofDevice} Já está desligado`);;
+        if (!this.connected) return console.log(`${this.typeofDevice} Já está desligado`);
+        console.log("Desligado...");
         this.connected = false;
     }
 }
@@ -23,22 +25,18 @@ class Cell extends ElectronicDevice {
 
     }
 
-    get sayBrand() {
-        return this.model
-    }
+    get sayBrand() { return console.log(this.model) }
 };
 
-const c1 = new Cell("Celular", "Samsung", "A10");
-
+const phone = new Cell("Celular", "Samsung", "A10");
+phone.sayBrand;
 class Tv extends ElectronicDevice {
     constructor(typeofDevice, mark, inches) {
         super(typeofDevice, mark);
         this.inches = inches;
     }
 
-    get sayInches() {
-        return this.inches
-    }
+    get sayInches() { return console.log(this.inches) }
 };
 
-const t1 = new Tv("Televisão", "LG", 60);
+const television = new Tv("Televisão", "LG", 60);
