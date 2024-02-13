@@ -1,39 +1,43 @@
-const registeredCars = [];
+// Definição de um símbolo para a propriedade de velocidade
 const _velocity = Symbol("Velocity");
+
 class Car {
-    constructor(name, value, placa) {
+    constructor(name) {
         this.name = name;
-        this.value = value;
-        this.placa = placa;
         this[_velocity] = 0;
     }
 
-    set spead(spead) {
-        if (typeof spead !== "number") return;
-        if (spead <= 0 || spead > 100) return;
-        this[_velocity] = spead;
+    speedUp() {
+        // Verifica se a velocidade não ultrapassa o limite máximo
+        if (this[_velocity] >= 100) return console.log('Máximo atingido');
+        return this[_velocity]++;
     }
 
-    get spead() { return this[_velocity]; }
-
-    reduceSpeed(spead) {
-        if (spead <= 0 || spead > 100) return;
-        return this[_velocity] -= spead;
+    reduceSpeed() {
+        // Verifica se o carro já está parado
+        if (this[_velocity] <= 0) return console.log("Veículo já está parado");
+        return this[_velocity]--;
     }
 
-    increaseSpeed(spead) {
-        if (spead > 100) return;
-        return this[_velocity] = spead;
+    get velocity() {
+        return this[_velocity];
     }
 
+    set velocity(value) {
+        // Verifica se o valor da velocidade está dentro dos limites válidos
+        if (value >= 100 || value <= 0) return console.log("Velocidade inválida");
+        return this[_velocity] = value;
+    }
 
-    get addCar() {
-        return registeredCars.push(this)
+    // Getter para retornar uma frase descrevendo o carro
+    get sayMyCar() {
+        return `My car is ${this.name}`;
     }
 }
 
+const car = new Car("Toyota");
 
-const carro = new Car("Sivic", 20000, "XXHDS");
-const carro2 = new Car("Honda", 10000, "XJKLDS");
-carro.addCar;
-carro2.addCar;
+// Aumentando a velocidade do carro até o máximo (100)
+for (let i = 0; i < 100; i++) car.speedUp();
+
+console.log(car);
