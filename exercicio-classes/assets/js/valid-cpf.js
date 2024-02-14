@@ -1,10 +1,9 @@
-// 705.484.450-52 070.987.720-03
 class validCPF {
     constructor(cpf) {
-        this.clearCPF = cpf;
+        this.clearCPF = cpf.replace(/\D+/g, "");
     }
 
-    valid() {
+    get valid() {
         if (!this.clearCPF) return false;
         if (this.clearCPF.length !== 11) return false;
         if (this.isSequence()) return false;
@@ -35,5 +34,3 @@ class validCPF {
         return sequence === this.clearCPF
     }
 }
-
-const cpf = new validCPF("04901297228");
