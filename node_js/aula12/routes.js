@@ -6,6 +6,7 @@ const userController = require("./src/controllers/userController");
 
 // rotas da page home
 route.get("/", homeController.initialPage);
+route.post("/", homeController.postPage);
 
 // Rotas de contato
 route.get("/contacts", contactController.initialPage);

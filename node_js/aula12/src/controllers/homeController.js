@@ -1,4 +1,9 @@
 exports.initialPage = (req, res) => {
+    res.status(200).render('index');
+    return
+}
 
-    res.status(200).render('index')
+exports.postPage = (req, res) => {
+    res.status(200).send(req.body);
+    return
 }
