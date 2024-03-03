@@ -1,6 +1,7 @@
 const fs = require('fs').promises;
 
-module.exports = (path, datas) => {
-    fs.writeFile(path, `${JSON.stringify(datas, "", 2)}`, { flag: "w" });
+module.exports = (path, datasContent) => {
+    const file = JSON.stringify(datasContent, "", 2);
+    fs.writeFile(path, `${file}`, { flag: "w" });
 };
 
